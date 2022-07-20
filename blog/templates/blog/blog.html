@@ -38,7 +38,7 @@
     <section>
         <div 
         style="width: 65%; 
-        background-color: rgba(18, 82, 140 , 0.8);
+        
         margin: auto;
         text-align: center;
         color: white;
@@ -49,7 +49,7 @@
                 <!-- para recorrer las categorias de abajo en el Queryset y el for para recorrer solo categorias-->
                 {% for categoria in post.categoria.all %}
 
-                    {{categoria.nombre}} &nbsp;&nbsp;&nbsp;
+                    <a href="{% url 'categoria' categoria.id %}" class="linksCategorias"> {{categoria.nombre}} &nbsp;&nbsp;&nbsp;</a>
 
                 {% endfor %}
 

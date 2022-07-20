@@ -15,7 +15,7 @@ def categoria(request, categoria_id):
     categoria= Categoria.objects.get(id=categoria_id) #obtener el id de la categoria many to many 
     posts= Post.objects.filter(categoria=categoria) #dividir los post por categoria
 
-    return render(request, "blog/categorias.html", {"categoria":categoria, "posts":posts})
+    return render(request, "blog/categoria.html", {"categoria":categoria, "posts":posts})
 
 
 

@@ -155,7 +155,7 @@ p {
 .cta {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background-color: rgb(242, 245, 240);
+  background-color: rgb(242, 245, 240, 0.85);
 }
 
 .cta .cta-inner {
@@ -276,4 +276,30 @@ ul.errorlist{
   padding-top: .75rem;
   font-style: italic;
   color: red;
+
+
+}
+
+.linksCategorias{
+color: white !important;
+text-decoration: underline;
+
+
+}
+
+.linksCategorias:hover{
+  text-decoration: none;
+}
+
+.contenedorFormulario{
+
+  background-color: rgba(18, 82, 140, 0.8);
+
+  width: 50%;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 1px 0px;
+
+
+
 }
