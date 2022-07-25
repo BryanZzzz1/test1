@@ -1,7 +1,7 @@
 
 
 
-class Carrito:
+class Carro:
     def __init__(self, request):
         self.request= request 
         self.session= request.session
@@ -9,8 +9,8 @@ class Carrito:
 
         if not carro:                                              #si la sesion no tiene carro entonces crea uno en forma de diccionario
             carro= self.session["carro"] = {}
-        else:                                                       # si la sesion tiene entonces lo usa
-            self.carro= carro
+        #else:                                                      # si la sesion tiene entonces lo usa
+        self.carro= carro
 
 
     def agregar(self,producto): 
@@ -19,17 +19,19 @@ class Carrito:
                 "producto_id": producto.id,
                 "nombre": producto.nombre,
                 "precio": str(producto.precio),
-                "stock": 1,
+                "cantidad": 1,
                 "imagen": producto.imagen.url
             }                                                         # entonces agrega todo esto
         else:
             for key, value in self.carro.items():
-                if key== str(producto.id):
-                    value["stock"]= value["stock"]+1
+                if key == str(producto.id):
+                    value["cantidad"]= value["cantidad"]+1
+                    value["precio"]= float(value["precio"])+ producto.precio
+                    
                     break
-        self.guardar_carrito()
+        self.guardar_carro()
 
-    def guardar_carrito(self):
+    def guardar_carro(self):
         self.session["carro"]= self.carro
         self.session.modified=True
 
@@ -37,17 +39,20 @@ class Carrito:
         producto.id= str(producto.id)
         if producto.id in self.carro:
             del self.carro[producto.id]
-            self.guardar_carrito()
+            self.guardar_carro()
+
+            
 
     def restar_producto(self, producto):
         for key, value in self.carro.items():
                 if key== str(producto.id):
-                    value["stock"]= value["stock"]-1
-                    if value["stock"] < 1:
+                    value["cantidad"]= value["cantidad"]-1
+                    value["precio"]= float(value["precio"])- producto.precio
+                    if value["cantidad"] < 1:
                         self.eliminar_carrito(producto)
                     break
                 
-        self.guardar_carrito()
+        self.guardar_carro()
 
     def limpiar_carrito(self):
         self.session["carro"] = {}
