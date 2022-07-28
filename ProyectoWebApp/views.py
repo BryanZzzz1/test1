@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from carro.carro import Carro
 
 
 
@@ -7,6 +8,8 @@ from django.shortcuts import render, HttpResponse
 
 
 def home(request):
+    
+    carro= Carro(request)
 
     return render(request,"ProyectoWebApp/home.html")
 

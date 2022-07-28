@@ -24,6 +24,19 @@
         <span class="site-heading-lower">Gestor de Pedidos LM</span>
       </h1>
 
+  
+        <div style="text-align: right; margin-right: 100px; color: white; margin-bottom: 10px;">
+          {% if user.is_authenticated %}
+            ¡Hola, {{user.username}}! &nbsp; &nbsp;
+            <a class="btn btn-primary btn-sm" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+
+
+          {% else %}
+            <a class="btn btn-primary btn-sm" href="{% url 'logeo' %}">Login</a> &nbsp; &nbsp; <a class="btn btn-primary btn-sm" href="{% url 'Autenticacion' %}">Registrate</a>
+
+          {% endif %}
+
+        </div>
 
  <!-- Navbar -->
  

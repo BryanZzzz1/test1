@@ -3,13 +3,13 @@
 
 class Carro:
     def __init__(self, request):
-        self.request= request 
-        self.session= request.session
+        self.request=request 
+        self.session=request.session
         carro= self.session.get("carro") #cada sesion tiene su carro
 
         if not carro:                                              #si la sesion no tiene carro entonces crea uno en forma de diccionario
-            carro= self.session["carro"] = {}
-        #else:                                                      # si la sesion tiene entonces lo usa
+            carro= self.session["carro"]= {}
+                                                        # si la sesion tiene entonces lo usa
         self.carro= carro
 
 
