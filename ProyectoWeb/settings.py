@@ -41,14 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ProyectoWebApp',
-    'servicios',
-    'blog',
-    'contacto',
     'tienda',
     'carro',
     'autenticacion',
     'crispy_forms',
     'pedidos',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
