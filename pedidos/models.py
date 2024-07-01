@@ -3,15 +3,14 @@ from django.contrib.auth import get_user_model
 from tienda.models import Producto
 from django.db.models import F, Sum, FloatField
 
-User = get_user_model()  # Obtiene el modelo de usuario actualmente en uso
+User = get_user_model()  
 
 class Pedido(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.id)  # Devuelve el ID del pedido como cadena
-
+        return str(self.id) 
     @property
     def total(self):
         total_pedido = self.lineas_pedido.aggregate(

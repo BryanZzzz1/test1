@@ -5,23 +5,23 @@ class Carro:
     def __init__(self, request):
         self.request=request 
         self.session=request.session
-        carro= self.session.get("carro") #cada sesion tiene su carro
+        carro= self.session.get("carro") 
 
-        if not carro:                                              #si la sesion no tiene carro entonces crea uno en forma de diccionario
+        if not carro:                                              
             carro= self.session["carro"]= {}
-                                                        # si la sesion tiene entonces lo usa
+                                                       
         self.carro= carro
 
 
     def agregar(self,producto): 
-        if(str(producto.id) not in self.carro.keys()):                 #si el producto (id) no esta en el carrito agregalo
+        if(str(producto.id) not in self.carro.keys()):                 
             self.carro[producto.id] = {
                 "producto_id": producto.id,
                 "nombre": producto.nombre,
                 "precio": str(producto.precio),
                 "cantidad": 1,
                 "imagen": producto.imagen.url
-            }                                                         # entonces agrega todo esto
+            }                                                        
         else:
             for key, value in self.carro.items():
                 if key == str(producto.id):

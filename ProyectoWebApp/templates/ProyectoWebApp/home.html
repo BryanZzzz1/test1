@@ -1,24 +1,22 @@
 {% extends "ProyectoWebApp/base.html" %}
-
 {% load static %}
 
 {% block contenido %}
-
-
 <link rel="stylesheet" href="{% static 'ProyectoWebApp/css/styleinicio.css' %}">
 
-   <!-- Heading -->
-   <section class="home">
+<section class="home">
     <video autoplay muted loop id="bgVideo">
         <source src="{% static 'ProyectoWebApp/video/video1.mp4' %}" type="video/mp4">
     </video>
-    <div class="form_container">
-        <i class="uil uil-times form_close"></i>
+    <div class="mensaje-container">
+        <div class="mensaje_encima">
+            <h1 style="font-family: Poppins, sans-serif; color: #ffffff81;"> Autos del Mar</h1>
+            <p style="color: #ffffff81;">En Autos del Mar, nos dedicamos a ofrecerte una experiencia única en la adquisición de vehículos. 
+                Con más de 20 años de trayectoria en el mercado automotriz, nos enorgullece ofrecerte una amplia
+                 gama de vehículos nuevos y usados de la más alta calidad. Desde elegantes sedanes hasta robustos SUVs
+                  y potentes deportivos, tenemos el automóvil perfecto para cada estilo de vida..</p>
+        </div>
     </div>
 </section>
- 
-    <!-- Message -->
 
-
-  {% endblock %}
-
+{% endblock %}

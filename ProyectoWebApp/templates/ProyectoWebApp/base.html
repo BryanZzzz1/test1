@@ -5,36 +5,36 @@
     
     {% load static %}
 
-    <!-- Bootstrap -->
+   
     <link href="{% static 'ProyectoWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-     <!-- Fonts -->
+     
     
      <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
      <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
      
 
-    <!-- Styles -->
+    
     <link rel="stylesheet" href="{% static 'ProyectoWebApp/css/gestion.css' %}">
     <link rel="stylesheet" href="{% static 'ProyectoWebApp/css/Footer.css' %}">
     <link rel="stylesheet" href="{% static 'ProyectoWebApp/css/styleinicio.css' %}">
 </head>
 
- <!-- Navbar -->
+
 <header class="header">
   <nav class="nav">
-    <a style="font-family: Poppins, sans-serif;" href="{% url 'Home' %}" class="nav_logo">AUTOS DEL MAR</a>
+    <a style="font-family: Poppins, sans-serif; text-decoration: none;" href="{% url 'Home' %}" class="nav_logo">AUTOS DEL MAR</a>
     <ul class="nav_items">
         <li class="nav_item">
-            <a style="font-family: Poppins, sans-serif;" shref="{% url 'Home' %}" class="nav_link">Inicio</a>
-            <a style="font-family: Poppins, sans-serif;" href="{% url 'Tienda' %}" class="nav_link">Vehiculos</a>
+            <a style="font-family: Poppins, sans-serif; text-decoration: none;" href="{% url 'Home' %}" class="nav_link">Inicio</a>
+            <a style="font-family: Poppins, sans-serif; text-decoration: none;" href="{% url 'Tienda' %}" class="nav_link">Vehiculos</a>
             
             {% if user.is_authenticated %}
             ¡Bienvenido, {{ user.username }}! &nbsp; &nbsp;
-            <a class="button" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+            <a class="button" style="text-decoration: none;" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
         {% else %}
-            <a class="button" href="{% url 'logeo' %}">Login</a> &nbsp;
-            <a class="button" href="{% url 'Autenticacion' %}">Registrate</a>
+            <a class="button" href="{% url 'logeo' %}" style="text-decoration: none;">Login</a> &nbsp;
+            <a class="button" href="{% url 'Autenticacion' %}" style="text-decoration: none;">Registrate</a>
         {% endif %}
     
         </li>
@@ -44,7 +44,7 @@
   
 
 
- <!-- contenido cambiante -->
+
   {% block contenido %}
 
 
@@ -55,8 +55,7 @@
 
 
 
-    <!-- Footer -->
-    <!-- Footer -->
+
  <footer>
         <div class="container">
             <div class="footer-content">
@@ -68,8 +67,8 @@
             <div class="footer-content">
                 <h3 style="font-family: Poppins, sans-serif;">Liks Rapidos</h3>
                  <ul class="list">
-                    <li><a style="font-family: Poppins, sans-serif; text-decoration: none; color: #ffffff;  " href="{% url 'Home' %}">inicio</a></li>
-                    <li><a style=" font-family: Poppins, sans-serif;text-decoration: none; color: #ffffff;" href="{% url 'Tienda' %}">Vehiculos</a></li>
+                    <li><a style="font-family: Poppins, sans-serif; text-decoration: none; color: #ffffff; text-decoration: none; " href="{% url 'Home' %}">inicio</a></li>
+                    <li><a style=" font-family: Poppins, sans-serif;text-decoration: none; color: #ffffff; text-decoration: none;" href="{% url 'Tienda' %}">Vehiculos</a></li>
                     
                     
                  </ul>
@@ -83,7 +82,7 @@
         </div>
       </footer>
 
-    <!-- Bootstrap -->
+   
    
 
 </body>

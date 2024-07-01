@@ -20,7 +20,7 @@ class CategoriaProd(models.Model):
 
 class Producto(models.Model):
     nombre= models.CharField(max_length=50) 
-    #autor= models.ForeignKey(User, on_delete=models.CASCADE)
+
     categorias= models.ForeignKey(CategoriaProd, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="tienda", null= True, blank=True)
     precio= models.FloatField()

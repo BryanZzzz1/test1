@@ -14,9 +14,9 @@ urlpatterns = [
 
     path('limpiar/', views.limpiar_carroproducto, name="limpiar"),
 
+    path('activar-desactivar/', views.activar_desactivar_carro, name='activar_desactivar_carro'),
 
-    
-    
+    path('mostrar-carro/', views.mostrar_carro, name='mostrar_carro'),
 
 
 ]

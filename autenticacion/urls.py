@@ -14,4 +14,4 @@ urlpatterns = [
 
 ]
 
-#as_view para que lo muestre como una vista
+

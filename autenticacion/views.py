@@ -23,8 +23,8 @@ class Vregistro(View):
         
             return redirect("Home")
         else:
-            for msg in form.error_messages: #recorrer los posibles errores del form
-                messages.error(request, form.error_messages[msg]) #mostrar errores del form, pasando el array
+            for msg in form.error_messages: 
+                messages.error(request, form.error_messages[msg]) 
 
             return redirect("Home")
         

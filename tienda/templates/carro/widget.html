@@ -1,12 +1,80 @@
-<div style="position: absolute; top: 60px; right: 20px; background-color: rgba(0, 0, 0, 0.8); padding: 10px; border-radius: 5px; z-index: 1000;">
-    <table class="table table-bordered" style="
-    color: rgba(255, 255, 255, 0.5); 
-    font-family:'Helvetica';
-    ">
 
+<style>
+   
+    .floating-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px; 
+        width: 60px;
+        height: 60px;
+        background-color: #007bff; 
+        color: white; 
+        border-radius: 50%; 
+        text-align: center;
+        line-height: 60px; 
+        font-size: 24px; 
+        cursor: pointer;
+        z-index: 1000; 
+        transition: background-color 0.3s ease;
+    }
+    
+  
+    .floating-button.active {
+        background-color: #dc3545; 
+    }
+    
+
+    #carrito-container {
+        display: none;
+        position: fixed;
+        top: 60px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        border-radius: 15px;
+        z-index: 1000;
+        max-width: 300px;
+        color: rgba(255, 255, 255, 0.5);
+        font-family: 'Helvetica';
+    }
+    
+    #carrito-container table {
+        margin-bottom: 0;
+    }
+    
+    #carrito-container tbody {
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 100px;
+    }
+    
+    #carrito-container .text-center {
+        text-align: center;
+    }
+    
+    #carrito-container .alert {
+        margin-bottom: 0;
+    }
+    
+    #carrito-container .button {
+        font-family: 'Helvetica';
+    }
+    
+    #carrito-container .transparente {
+        visibility: hidden;
+    }
+</style>
+
+
+<div class="floating-button" id="floatingButton">
+    <i class="fas fa-shopping-cart">Carrito</i>
+</div>
+
+
+<div id="carrito-container">
+    <table class="table table-bordered">
         <thead>
             <tr>
-                <th colspan="3" class="text-center">Carrito Compras</th>
+                <th colspan="3" class="text-center">Carrito de Compras</th>
             </tr>
             <tr>
                 <th>Producto</th>
@@ -15,35 +83,24 @@
             </tr>
         </thead>
 
-        <tbody style="background-color: rgba(0, 0, 0, 0.2); padding: 5px;">
+        <tbody>
             {% if request.session.carro.items %}
                 {% for key, value in request.session.carro.items %}
                     <tr class="text-center">
-                        <td>{{value.nombre}}</td>
-                        <td>{{value.cantidad}}</td>
+                        <td>{{ value.nombre }}</td>
+                        <td>{{ value.cantidad }}</td>
                         <td>
-                            <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-sm btn-success" style="
-                                background-color: rgba(0, 0, 0, 0.041);
-                                border-color: rgba(0, 0, 0, 0.041);
-                                color: #ffffff;">+</a>
-
-                            <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-success" style="
-                                background-color: rgba(0, 0, 0, 0.041);
-                                border-color: rgba(0, 0, 0, 0.041);
-                                color: #ffffff;">-</a><br>
-                            {{value.precio}} $
+                            <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
+                            <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-success">-</a><br>
+                            {{ value.precio }} $
                         </td>
                     </tr>
                 {% endfor %}
             {% else %}
                 <tr>
                     <td colspan="3">
-                        <div class="alert alert-danger text-center" style="
-                        color: rgba(255, 255, 255, 0.7); 
-                        background-color: rgba(0, 0, 0, 0.041);
-                        font-family:'Helvetica';
-                        ">
-                            ¡No agregaste productos!
+                        <div class="alert alert-danger text-center">
+                            ¡No hay productos en el carro!
                         </div>
                     </td>
                 </tr>
@@ -52,13 +109,86 @@
 
         <tfoot>
             <tr>
-                <td colspan="3" style="
-                color: rgba(255, 255, 255, 0.5); 
-                font-family:'Helvetica';
-                ">
-                    Total: {{importe_total_carro}} $
+                <td colspan="3">
+                    Total: {{ importe_total_carro }} $
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-center">
+                    <form id="formVaciarCarro" method="post" action="{% url 'carro:limpiar' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="button">Comprar</button>
+                    </form>
+                    <h8 class="transparente">texto invisible</h8>
+                    <form id="formVaciarCarro" method="post" action="{% url 'carro:limpiar' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="button">Limpiar Carrito</button>
+                    </form>
                 </td>
             </tr>
         </tfoot>
-    </table>
+    </table>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var carritoContainer = document.getElementById('carrito-container');
+    var floatingButton = document.getElementById('floatingButton');
+
+    
+    floatingButton.addEventListener('click', function() {
+        toggleCarrito();
+    });
+
+    
+    function toggleCarrito() {
+        if (carritoContainer.style.display === 'none' || carritoContainer.style.display === '') {
+            carritoContainer.style.display = 'block';
+            floatingButton.classList.add('active'); 
+        } else {
+            carritoContainer.style.display = 'none';
+            floatingButton.classList.remove('active'); 
+        }
+    }
+
+ 
+    function vaciarCarro() {
+
+    }
+
+    
+    function mostrarMensaje() {
+        Swal.fire({
+            icon: 'success',
+            title: '¡Compra realizada con éxito!',
+            showConfirmButton: true
+        }).then(function(result) {
+            
+            configurarEventoRealizarOrden();
+        });
+    }
+
+    
+    function configurarEventoRealizarOrden() {
+        var btnRealizarOrden = document.getElementById('formVaciarCarro');
+        if (btnRealizarOrden) {
+            btnRealizarOrden.addEventListener('click', function(event) {
+                event.preventDefault(); 
+
+                
+                vaciarCarro();
+
+                
+                mostrarMensaje();
+            });
+        }
+    }
+
+   
+    configurarEventoRealizarOrden();
+});
+</script>
