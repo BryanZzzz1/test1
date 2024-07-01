@@ -33,6 +33,7 @@ pip install -r requirements.txt
 Instala las siguientes bibliotecas adicionales necesarias para el proyecto:
 
 pip install pillow
+
 pip install crispy-bootstrap4
 
 
@@ -56,6 +57,7 @@ http://127.0.0.1:8000/admin
 Utiliza las siguientes credenciales:
 
 Usuario: AdministradorMar
+
 Contraseña: admin123
 
 
