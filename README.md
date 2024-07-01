@@ -19,6 +19,7 @@ Esto creará un entorno virtual llamado myvenv.
 Crea un archivo requirements.txt y agrega las siguientes dependencias:
 
 Django==4.1.2
+
 django-crispy-forms==1.12.0
 
 Instalación de Dependencias
