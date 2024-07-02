@@ -12,10 +12,10 @@
         <i class="uil uil-times form_close"></i>
     </div>
 
-    <div class="contenedorFormulario" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px; width: 50%; text-align: center;">
+    <div class="contenedorFormulario" style="font-variant: normal; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px; width: 50%; text-align: center;">
         {% if messages %}
             {% for mensaje in messages %}
-                <span style="color: #ffffff; font-family: 'Helvetica'; font-size: larger; display: block; margin-bottom: 10px;">{{ mensaje }}</span>
+                <span style="text-decoration: none; color: #ffffff; font-family: 'Helvetica'; font-size: larger; display: block; margin-bottom: 10px;">{{ mensaje }}</span>
             {% endfor %}
         {% endif %}
 

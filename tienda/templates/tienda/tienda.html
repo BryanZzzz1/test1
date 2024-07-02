@@ -3,6 +3,28 @@
 {% load static %}
 
 {% block contenido %}
+<style>
+    .background-blur {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        filter: blur(10px);
+        -webkit-filter: blur(10px); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<div class="background-blur">
+    <video autoplay muted loop id="bgVideo">
+        <source src="{% static 'ProyectoWebApp/video/video1.mp4' %}" type="video/mp4">
+    </video>
+</div>
+
 
 
 <h1 class="transparente" style="visibility: hidden;">texto invisible</h1>

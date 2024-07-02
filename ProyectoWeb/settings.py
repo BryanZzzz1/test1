@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'carro',
     'autenticacion',
     'crispy_forms',
-    'pedidos',
+    
     'crispy_bootstrap4',
     
 ]
@@ -159,3 +159,7 @@ MESSAGE_TAGS= {
     mensajes_de_error.ERROR:'danger',
 
 }
+
+ADMIN_SITE_HEADER = "Mi Sitio de Administración Personalizado"
+ADMIN_SITE_TITLE = "Mi Sitio de Admin"
+ADMIN_INDEX_TITLE = "Bienvenido al Panel de Control"
