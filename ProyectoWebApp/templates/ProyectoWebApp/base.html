@@ -79,6 +79,12 @@
         </div>
         <div class="bottom-bar">
             <p style="font-family: Poppins, sans-serif;">&copy; 2024 AUTOS DEL MAR . All rights reserved</p>
+            {% if user.is_authenticated and user.is_staff %}
+    <a href="{% url 'admin:index' %}" class="button">Ir al Administrador</a>
+    {% url 'lista_autos' as lista_autos_url %}
+    <p>URL generada: {{ lista_autos_url }}</p>
+    <a href="{{ lista_autos_url }}" class="button">agregar Autos</a>
+{% endif %}
         </div>
       </footer>
 
